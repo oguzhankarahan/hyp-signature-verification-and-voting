@@ -1,3 +1,8 @@
+// This smart contract performs the wallet-based feature approval process. 
+// For now merchants url property can be approved / voted. But later, 
+// different features can be submitted for approval. It stores it on the blockchain as a list.
+// It is possible to approve more than one feature in a Smart Account.
+
 pragma solidity 0.4.24;
 
 /**

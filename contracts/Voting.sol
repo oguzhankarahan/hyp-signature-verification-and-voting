@@ -1,3 +1,5 @@
+// This is performing the voting process. Like the Aragon Voting app.
+
 pragma solidity 0.4.24;
 
 import "@aragon/os/contracts/apps/AragonApp.sol";
