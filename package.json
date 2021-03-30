@@ -1,7 +1,7 @@
 {
-  "name": "hardhat-tutorial",
+  "name": "hypernet-smart-accounts-and-voting",
   "version": "1.0.0",
-  "description": "",
+  "description": "Smart Accounts is to enable a universal platform for account representation and verification, enabling people, organisations, IoT devices, Dapps, or anything else, to obtain, use and verify account information with minimal reliance on centrally provided systems or services.",
   "main": "index.js",
   "scripts": {
     "console": "buidler console",

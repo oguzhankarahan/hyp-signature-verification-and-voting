@@ -1,10 +1,10 @@
 {
-    "name": "HYPVoting",
+    "name": "Hypernet Smart Accounts and Voting",
     "author": "Hypernetlabs",
-    "description": "Create and participate in votes",
-    "changelog_url": "https://github.com/aragon/aragon-apps/releases",
+    "description": "Smart Accounts is to enable a universal platform for account representation and verification, enabling people, organisations, IoT devices, Dapps, or anything else, to obtain, use and verify account information with minimal reliance on centrally provided systems or services.",
+    "changelog_url": "https://github.com/oguzhankarahan/hyp-signature-verification-and-voting.git/releases",
     "details_url": "/meta/details.md",
-    "source_url": "https://github.com/aragon/aragon-apps/blob/master/apps/voting",
+    "source_url": "https://github.com/oguzhankarahan/hyp-signature-verification-and-voting.git/blob/master/apps/voting",
     "icons": [
       { "src": "/meta/icon.svg", "sizes": "56x56" }
     ],
