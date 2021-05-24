@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import AutoLink from '../components/AutoLink'
 
@@ -15,6 +15,17 @@ const VoteDescription = React.memo(function VoteDescription({
     return null
   }
 
+  const [question, setQuestion] = useState('')
+  const [url, setURL] = useState('')
+  const [wallet, setWallet] = useState('')
+  const [signature, setSignature] = useState('')
+
+  let splitArray = description.split(";");
+  setQuestion(splitArray[0]);
+  setURL(splitArray[1]);
+  setWallet(splitArray[2]);
+  setSignature(splitArray[3]);
+
   return (
     <div
       {...props}
@@ -29,11 +40,36 @@ const VoteDescription = React.memo(function VoteDescription({
     >
       {prefix}
       {disabled ? (
-        <span>{description}</span>
+        // <span>{description}</span>
+        <div>
+          <div>
+            <strong>URL:</strong><span>{url}</span>
+          </div>
+          <div>
+            <strong>Wallet:</strong><span>{wallet}</span>
+          </div>
+          <div>
+            <strong>Signature:</strong><span>{signature}</span>
+          </div>
+          <div>
+            <strong>Question:</strong><span>{question}</span>
+          </div>
+        </div>
       ) : (
-        <AutoLink>
-          <span>{description}</span>
-        </AutoLink>
+        <div>
+          <AutoLink>
+            <strong>URL:</strong><span>{url}</span>
+          </AutoLink>
+          <AutoLink>
+            <strong>Wallet:</strong><span>{wallet}</span>
+          </AutoLink>
+          <AutoLink>
+            <strong>Signature:</strong><span>{signature}</span>
+          </AutoLink>
+          <AutoLink>
+            <strong>Question:</strong><span>{question}</span>
+          </AutoLink>
+        </div>
       )}
     </div>
   )
@@ -46,7 +82,7 @@ VoteDescription.propTypes = {
 }
 
 VoteDescription.defaultProps = {
-  description: '',
+  description: "",
 }
 
 export default VoteDescription

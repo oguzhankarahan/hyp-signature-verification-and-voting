@@ -27,19 +27,32 @@ const NewVotePanel = React.memo(function NewVotePanel({
 
 function NewVotePanelContent({ onCreateVote }) {
   const [question, setQuestion] = useState('')
+  const [url, setURL] = useState('')
+  const [wallet, setWallet] = useState('')
+  const [signature, setSignature] = useState('')
 
   const inputRef = useSidePanelFocusOnReady()
 
   const handleSubmit = useCallback(
     event => {
       event.preventDefault()
-      onCreateVote(question.trim())
+      onCreateVote(question.trim().replaceAll("\n", "") + "\n" + url.trim().replaceAll("\n", "") + "\n" + wallet.trim().replaceAll("\n", "") + "\n" + signature.trim().replaceAll("\n", ""))
     },
-    [onCreateVote, question]
+    [onCreateVote, question.replaceAll("\n", "") + "\n" + url.replaceAll("\n", "") + "\n" + wallet.replaceAll("\n", "") + "\n" + signature.replaceAll("\n", "")]
   )
 
   const handleQuestionChange = useCallback(event => {
     setQuestion(event.target.value)
+  }, [])
+
+  const handleUrlChange = useCallback(event => {
+    setURL(event.target.value)
+  }, [])
+  const handleWalletChange = useCallback(event => {
+    setWallet(event.target.value)
+  }, [])
+  const handleSignatureChange = useCallback(event => {
+    setSignature(event.target.value)
   }, [])
 
   return (
@@ -59,6 +72,33 @@ function NewVotePanelContent({ onCreateVote }) {
             wide
           />
         </Field>
+        <Field label="URL">
+          <TextInput
+            ref={inputRef}
+            value={url}
+            onChange={handleUrlChange}
+            required
+            wide
+          />
+        </Field>
+        <Field label="Wallet Address">
+          <TextInput
+            ref={inputRef}
+            value={wallet}
+            onChange={handleWalletChange}
+            required
+            wide
+          />
+        </Field>
+        <Field label="Signature">
+          <TextInput
+            ref={inputRef}
+            value={signature}
+            onChange={handleSignatureChange}
+            required
+            wide
+          />
+        </Field>
         <div
           css={`
             margin-bottom: ${3 * GU}px;
@@ -69,7 +109,7 @@ function NewVotePanelContent({ onCreateVote }) {
             any direct repercussions on the organization.
           </Info>
         </div>
-        <Button disabled={!question} mode="strong" type="submit" wide>
+        <Button disabled={!question && !url && !wallet && !signature} mode="strong" type="submit" wide>
           Create new vote
         </Button>
       </form>
